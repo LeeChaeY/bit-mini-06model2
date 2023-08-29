@@ -138,7 +138,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/listProduct.do")
-	public String listProduct( @ModelAttribute("search") Search search, @RequestParam("menu") String menu , Model model , HttpServletRequest request) throws Exception{
+	public String listProduct( @ModelAttribute("search") Search search, @RequestParam("menu") String menu , 
+											Model model , HttpServletRequest request) throws Exception{
 		String beginPrice = null;
 		String endPrice = null;
 		
@@ -146,13 +147,14 @@ public class ProductController {
 				&& request.getParameter("endPrice") != null &&!request.getParameter("endPrice").equals("")) {
 			search.setSearchCondition("2");
 			beginPrice = request.getParameter("beginPrice");
-			request.setAttribute("beginPrice", request.getParameter("beginPrice"));
+			model.addAttribute("beginPrice", beginPrice);
 			endPrice = request.getParameter("endPrice");
-			request.setAttribute("endPrice", endPrice);
-		} else if (request.getParameter("searchKeyword") != null && !request.getParameter("searchKeyword").equals("")) {
+			model.addAttribute("endPrice", endPrice);
+		} else if (search.getSearchKeyword() != null && !search.getSearchKeyword().equals("")) {
 			search.setSearchCondition("1");
 		}
-		System.out.println("/listProduct.do");
+		System.out.println("/listProduct.do : "+search);
+		System.out.println("/listProduct.do : beginPrice : "+beginPrice+", endPrice : "+endPrice);
 		
 		if(search.getCurrentPage() ==0 ){
 			search.setCurrentPage(1);

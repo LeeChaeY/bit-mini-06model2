@@ -94,7 +94,7 @@
 	<tr>
 		<td width="104" class="ct_write">구매자주소</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${ purchasedivyAddr }</td>
+		<td class="ct_write01">${ purchase.divyAddr }</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -163,7 +163,7 @@
 	</tr>
 	<tr>
 		<td align="center">
-			<c:if test="${ !purchase.tranCode.equals('2') }">
+			<c:if test="${ empty purchase.tranCode && !purchase.tranCode.equals('2') }">
 				<h3>해당 상품의 배송이 시작되었습니다. 구매정보수정이 불가능합니다.</h3>
 			</c:if>
 		</td>
