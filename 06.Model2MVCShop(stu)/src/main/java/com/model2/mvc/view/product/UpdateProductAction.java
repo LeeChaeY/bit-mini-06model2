@@ -40,8 +40,6 @@ public class UpdateProductAction extends Action {
 //		ProductService service = new ProductServiceImpl();
 		productService.updateProduct(Product);
 		
-		request.setAttribute("menu", menu);
-		
 		return "redirect:/getProduct.do?prodNo="+prodNo+"&menu="+menu;
 	}
 }

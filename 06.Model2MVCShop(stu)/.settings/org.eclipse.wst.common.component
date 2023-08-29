@@ -2,7 +2,9 @@
     <wb-module deploy-name="06.Model2MVCShop(stu)">
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <property name="context-root" value="06.Model2MVCShop(stu)"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <property name="java-output-path" value="/06.Model2MVCShop(stu)/build/classes"/>
+        <property name="context-root" value="/"/>
     </wb-module>
 </project-modules>

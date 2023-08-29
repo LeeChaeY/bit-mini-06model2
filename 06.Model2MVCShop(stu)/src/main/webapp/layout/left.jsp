@@ -52,7 +52,7 @@
 					<table  border="0" cellspacing="0" cellpadding="0" width="159">
 						<tr>
 							<td class="Depth03">
-								<a href="../product/addProductView.jsp;" target="rightFrame">판매상품등록</a>
+								<a href="/addProductView.do" target="rightFrame">판매상품등록</a>
 							</td>
 						</tr>
 						<td class="Depth03">

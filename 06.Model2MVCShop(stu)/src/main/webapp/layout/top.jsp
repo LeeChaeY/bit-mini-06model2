@@ -23,7 +23,7 @@
 		        	<tr> 
 		          		<td width="115">
 		          			<c:if test="${ empty user }" >
-		              			<a href="/user/loginView.jsp" target="rightFrame">login</a>   
+		              			<a href="/loginView.do" target="rightFrame">login</a>   
 		          			</c:if>
 		          		</td>
 		          		<td width="14">&nbsp;</td>
