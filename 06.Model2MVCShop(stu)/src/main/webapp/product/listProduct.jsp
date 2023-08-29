@@ -35,35 +35,39 @@
 		}
 	}
 	
-	function fncGet${ type }List(currentPage){
-		let se = document.detailForm.searchCondition;
-		let op = se.options[se.selectedIndex].value;
-
-		if(op == "2") {
-			if (document.detailForm.beginPrice.value == "" || document.detailForm.endPrice.value == "") {
-				alert("금액 범위를 기입해야합니다.");
-				return false;
-			} else if (document.detailForm.beginPrice.value != "" && document.detailForm.endPrice.value != "" 
-							&& document.detailForm.beginPrice.value > document.detailForm.endPrice.value) {
-				alert("금액 범위가 잘못되었습니다.");
-				return false;
-			}
-		} else if (op == "1") {
-			if (document.detailForm.searchKeyword.value == "") {
-				alert("키워드를 기입해야합니다.");
-				return false;
-			}
-		} else {
-			alert("검색 분야를 기입해야합니다.");
-			return false;
-		}
+	function fncGet${ type }List(currentPage, p){
+		p = typeof p != "undefined" ? p : 0;
 		
-		if (op == "1") {
-			document.detailForm.beginPrice.value="";
-			document.detailForm.endPrice.value="";
-			document.detailForm.searchKeyword.value = document.detailForm.searchKeyword.value;
-		} else if (op == "2") {
-			document.detailForm.searchKeyword.value = document.detailForm.beginPrice.value+","+document.detailForm.endPrice.value;
+		if (p) {
+			let se = document.detailForm.searchCondition;
+			let op = se.options[se.selectedIndex].value;
+	
+			if(op == "2") {
+				if (document.detailForm.beginPrice.value == "" || document.detailForm.endPrice.value == "") {
+					alert("금액 범위를 기입해야합니다.");
+					return false;
+				} else if (document.detailForm.beginPrice.value != "" && document.detailForm.endPrice.value != "" 
+								&& document.detailForm.beginPrice.value > document.detailForm.endPrice.value) {
+					alert("금액 범위가 잘못되었습니다.");
+					return false;
+				}
+			} else if (op == "1") {
+				if (document.detailForm.searchKeyword.value == "") {
+					alert("키워드를 기입해야합니다.");
+					return false;
+				}
+			} else {
+				alert("검색 분야를 기입해야합니다.");
+				return false;
+			}
+			
+			if (op == "1") {
+				document.detailForm.beginPrice.value="";
+				document.detailForm.endPrice.value="";
+				document.detailForm.searchKeyword.value = document.detailForm.searchKeyword.value;
+			} else if (op == "2") {
+				document.detailForm.searchKeyword.value = document.detailForm.beginPrice.value+","+document.detailForm.endPrice.value;
+			}
 		}
 		
 		document.detailForm.orderCondition.value = "0";
@@ -78,7 +82,7 @@
 		if (op == "2") {
 			td.style.display = "";
 			document.detailForm.searchKeyword.style.display = "none";
-		} else if (op == "1") {
+		} else if (op == "0" || op == "1") {
 			td.style.display = "none";
 			document.detailForm.searchKeyword.style.display = "";
 		}
@@ -169,7 +173,7 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23">
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
-						<a href="javascript:fncGet${ type }List('1');">검색</a>
+						<a href="javascript:fncGet${ type }List('1', 1);">검색</a>
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23">

@@ -159,8 +159,15 @@ public class ProductController {
 		}
 		search.setPageSize(pageSize);
 		
+		String searchKeyword = null;
+		if(search.getSearchKeyword() != null && !search.getSearchKeyword().equals(""))
+			searchKeyword = search.getSearchKeyword();
+		
 		// Business logic ผ๖วเ
 		Map<String , Object> map=productService.getProductList(search);
+		
+		if(search.getSearchKeyword() != null && !search.getSearchKeyword().equals(""))
+			search.setSearchKeyword(searchKeyword);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println("ListProduct.do ::"+resultPage);

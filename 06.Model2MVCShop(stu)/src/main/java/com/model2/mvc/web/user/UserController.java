@@ -158,8 +158,15 @@ public class UserController {
 		}
 		search.setPageSize(pageSize);
 		
+		String searchKeyword = null;
+		if(search.getSearchKeyword() != null && !search.getSearchKeyword().equals(""))
+			searchKeyword = search.getSearchKeyword();
+		
 		// Business logic ผ๖วเ
 		Map<String , Object> map=userService.getUserList(search);
+		
+		if(search.getSearchKeyword() != null && !search.getSearchKeyword().equals(""))
+			search.setSearchKeyword(searchKeyword);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println("ListUserAction ::"+resultPage);
